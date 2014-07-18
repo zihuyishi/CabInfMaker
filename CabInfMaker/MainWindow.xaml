@@ -1,0 +1,75 @@
+﻿<Window x:Class="CabInfMaker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Inf文件生成器" Height="450" Width="600">
+    <Grid>
+        <TabControl>
+            <TabItem  FontSize="15">
+                <TabItem.Header>
+                    <StackPanel MaxHeight="60" MaxWidth="40">
+                        <Image Source="/CabInfMaker;component/Images/Image_png_AC01.png"></Image>
+                        <TextBlock>设置</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="4*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Canvas Grid.Row="0" Grid.ColumnSpan="2">
+                        <Label Margin="5,5,0,0"  Content="目标文件夹目录"></Label>
+                        <TextBox x:Name="desFolderTextBox" Margin="100,5,0,0" Width="250" TextChanged="desFolderTextBox_TextChanged"></TextBox>
+                        <Button x:Name="setDesFolderButton" Margin="370,5,0,0" FontSize="15"  Content="设置" Click="setDesFolderButton_Click"></Button>
+                        <Button x:Name="applyDesBuuton" Margin="420,5,0,0" FontSize="15" Content="应用" IsEnabled="False" Click="applyDesBuuton_Click"></Button>
+                    </Canvas>
+                    <GroupBox Header="目录" FontSize="15" Grid.Row="1">
+                        <ListBox x:Name="desFilesListBox"  SelectionChanged="desFilesListBox_SelectionChanged"></ListBox>
+                    </GroupBox>
+                    <GroupBox Grid.Row="1" Grid.Column="1" Header="配置">
+                        <StackPanel>
+                            <TextBlock x:Name="filePathTextBox" Margin="3" FontSize="15" Width="Auto"></TextBlock>
+                            <Label FontSize="15" Width="Auto">
+                                <WrapPanel Width="Auto">
+                                    <Label Content="Clsid:"></Label>
+                                    <TextBox x:Name="clsidTextBox" MinWidth="180"></TextBox>
+                                </WrapPanel>
+                            </Label>
+                            <WrapPanel>
+                                <CheckBox x:Name="registerCheckBox" Margin="5" FontSize="15" Content="注册"
+                                      Checked="registerCheckBox_CheckedChange" Unchecked="registerCheckBox_CheckedChange"></CheckBox>
+                                <CheckBox x:Name="clsidCheckBox" Margin="5" FontSize="15" Content="设置Clsid"
+                                      Checked="clsidCheckBox_CheckedChange"></CheckBox>
+                            </WrapPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem FontSize="15">
+                <TabItem.Header>
+                    <StackPanel MaxHeight="60" MaxWidth="40">
+                        <Image Source="/CabInfMaker;component/Images/Image_png_AC02.png"></Image>
+                        <TextBlock>生成</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="预览Inf">
+                        <TextBox x:Name="infContentTextBox"  AcceptsReturn="True" AcceptsTab="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"></TextBox>
+                    </GroupBox>
+                    <StackPanel Grid.Column="1" >
+                        <Button x:Name="preViewButton" Content="生成预览" Click="preViewButton_Click"></Button>
+                        <Button x:Name="makeInfButton" Content="生成"  Click="makeInfButton_Click"></Button>
+                        <Button x:Name="runIExpressButton" Content="启动IExpress" ToolTip="IExpress为Cab生成工具" Click="runIExpressButton_Click"></Button>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
